@@ -1,0 +1,120 @@
+body{
+margin:0;
+font-family:Poppins;
+color:#5a4a3c;
+background:#fffdf9;
+}
+
+section{padding:80px 20px;text-align:center}
+
+/* HERO */
+.hero{
+height:100vh;
+background:url("images/hero.jpg") center/cover fixed;
+display:flex;align-items:center;justify-content:center;
+}
+
+.overlay{
+background:rgba(255,248,240,0.6);
+padding:40px;border-radius:8px
+}
+
+.title{
+font-family:"Playfair Display";
+font-size:46px;
+letter-spacing:3px;
+}
+
+/* COUPLE */
+.couple-intro{
+display:flex;
+justify-content:center;
+gap:40px;
+flex-wrap:wrap;
+}
+
+.person img{
+width:200px;height:260px;object-fit:cover;
+border-radius:6px;
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+.gallery img{
+width:90%;
+max-width:600px;
+border-radius:10px;
+}
+
+/* DETAILS */
+.details{background:#f7efe5}
+.card{
+background:white;
+margin:20px auto;
+padding:25px;
+max-width:300px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+.map-btn{
+display:inline-block;
+margin-top:10px;
+padding:10px 20px;
+background:#d4af7f;
+color:white;text-decoration:none;
+}
+
+/* ANIMATION */
+.fade{opacity:0;transform:translateY(40px);transition:1.5s}
+.reveal{opacity:0;transform:translateY(60px);transition:1.3s}
+.reveal-left{opacity:0;transform:translateX(-80px);transition:1.3s}
+.reveal-right{opacity:0;transform:translateX(80px);transition:1.3s}
+.zoom{transform:scale(1.2);transition:4s}
+
+.show{opacity:1;transform:none}
+#tapToStart{
+position:fixed;
+inset:0;
+background:#fffdf9;
+display:flex;
+align-items:center;
+justify-content:center;
+font-family:"Playfair Display";
+font-size:22px;
+letter-spacing:2px;
+z-index:9999;
+animation:fadeIn 1.5s;
+}
+
+@keyframes fadeIn{
+from{opacity:0}
+to{opacity:1}
+}
+
+/* breathing cards */
+.card{
+animation:breath 6s ease-in-out infinite;
+}
+@keyframes breath{
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-8px)}
+}
+.countdown{
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.flip{
+background:white;
+padding:15px 18px;
+font-size:26px;
+box-shadow:0 8px 20px rgba(0,0,0,0.1);
+border-radius:6px;
+animation:flipIn .8s;
+}
+
+@keyframes flipIn{
+from{transform:rotateX(90deg);opacity:0}
+to{transform:rotateX(0);opacity:1}
+}

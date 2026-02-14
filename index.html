@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Royal Holy Matrimony</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Georgia', serif;
+}
+
+body{
+    background:black;
+    overflow:hidden;
+}
+
+/* ================= INTRO ================= */
+
+#intro{
+    position:fixed;
+    width:100%;
+    height:100vh;
+    background:black;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    color:gold;
+    z-index:10;
+    animation:fadeOut 3s ease-in-out 4s forwards;
+}
+
+#intro h1{
+    margin-bottom: 20px;
+    font-size:18px;
+    letter-spacing:4px;
+    animation:fadeIn 3s ease-in-out;
+}
+
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+@keyframes fadeOut{
+    to{opacity:0;visibility:hidden;}
+}
+
+/* ================= ENVELOPE ================= */
+
+.envelope-container{
+    position:absolute;
+    width:100%;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:5;
+}
+
+.envelope{
+    width:320px;
+    height:220px;
+    background:linear-gradient(45deg,#d4af37,#b8860b);
+    position:relative;
+    cursor:pointer;
+    box-shadow:0 10px 30px rgba(212,175,55,0.6);
+}
+
+.flap{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:linear-gradient(45deg,#b8860b,#d4af37);
+    clip-path:polygon(0 0, 100% 0, 50% 60%);
+    transform-origin:top;
+    transition:1s;
+}
+
+.letter{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:bold;
+    color:#8b0000;
+    transform:translateY(100%);
+    transition:1s;
+}
+
+.open .flap{
+    transform:rotateX(180deg);
+}
+
+.open .letter{
+    transform:translateY(0);
+}
+
+/* ================= MAIN ================= */
+
+#main{
+    display:none;
+    background:linear-gradient(to bottom,#2c1a12,#000);
+    min-height:100vh;
+    color:gold;
+    text-align:center;
+    padding:40px 20px;
+    overflow: hidden;
+}
+
+.card{
+    max-width:1000px;
+    margin:auto;
+    padding:40px;
+    border:3px solid gold;
+    border-radius:20px;
+    background:rgba(0,0,0,0.85);
+    box-shadow:0 0 40px rgba(255,215,0,0.6);
+}
+
+.cross{
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.names{
+    font-size:22px;
+    margin:20px 0;
+    letter-spacing:2px;
+}
+
+/* ================= PHOTO SECTION ================= */
+
+.photo-section{
+    margin:40px 0;
+}
+
+/* Separate */
+.separate-photos{
+    display:flex;
+    justify-content:center;
+    /* gap:70px;
+    flex-wrap:wrap; */
+    margin-bottom:40px;
+}
+
+.person{
+    text-align:center;
+}
+
+.frame{
+    padding:12px;
+    border:6px solid gold;
+    border-radius:20px;
+    box-shadow:0 0 30px gold;
+    transition:0.6s;
+    animation:fadeUp 2s ease-in-out;
+}
+
+.frame:hover{
+    transform:scale(1.05);
+}
+
+.small-frame img{
+    width:200px;
+    height:auto;
+    object-fit:cover;
+    border-radius:15px;
+}
+
+/* Joined */
+.joined-photo{
+    display:flex;
+    justify-content:center;
+}
+
+.big-frame img{
+    width:500px;
+    height:auto;
+    object-fit:cover;
+    border-radius:20px;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* ================= DETAILS ================= */
+
+.details{
+    margin:15px 0;
+    font-size:18px;
+}
+
+button{
+    padding:10px 20px;
+    margin:10px;
+    border:none;
+    border-radius:20px;
+    background:gold;
+    color:black;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+#countdown{
+    margin-top:20px;
+    font-size:16px;
+}
+
+/* ================= ROSES ================= */
+
+.flower{
+    position:fixed;
+    top:-50px;
+    font-size:22px;
+    animation:fall linear infinite;
+}
+
+@keyframes fall{
+    to{transform:translateY(110vh);}
+}
+
+@media(max-width:768px){
+    /* .separate-photos{
+        flex-direction:column;
+        align-items:center;
+    } */
+
+    .big-frame img{
+        width:90%;
+        height:auto;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- INTRO -->
+<div id="intro">
+    <h1>✝️ By the Grace of God ✝️</h1>
+    <p>We Invite You to Celebrate Our Function</p>
+</div>
+
+<!-- ENVELOPE -->
+<div class="envelope-container">
+    <div class="envelope" onclick="openEnvelope(this)">
+        <div class="flap"></div>
+        <div class="letter">👑 Click to Open 👑</div>
+    </div>
+</div>
+
+<!-- MAIN -->
+<div id="main">
+    <div class="card">
+
+        <h3>Royal Holy Matrimony</h3>
+
+        <div class="names">
+            Thansay ❤️ Deena
+        </div>
+
+        <!-- PHOTO SECTION -->
+        <div class="photo-section">
+
+            <div class="separate-photos">
+                <div class="person">
+                    <div class="frame small-frame">
+                        <img src="groom.jpg" alt="Groom">
+                    </div>
+                    <p style="padding-left: 50px;">A.Thansay King</p>
+                </div>
+
+                <div class="person">
+                    <div class="frame small-frame">
+                        <img src="bride.jpg" alt="Bride">
+                    </div>
+                    <p style="padding-right: 50px;">Antony Deena</p>
+                </div>
+            </div>
+
+            <div class="joined-photo">
+                <div class="frame big-frame">
+                    <img src="couple.jpg" alt="Couple">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="details">
+            Marriage Ceremony <br>
+            18 May 2026 | 10:00 AM <br>
+            St. Mary's Church, Thailapuram
+        </div>
+
+        <button onclick="openMap('https://maps.google.com/?q=St+Marys+Church+Chennai')">
+            📍 View Marriage Location
+        </button>
+
+        <div class="details">
+            Reception <br>
+            18 May 2026 | 6:00 PM <br>
+            Ghandhi Nagar, Palayakayal
+        </div>
+
+        <button onclick="openMap('https://maps.google.com/?q=Grand+Palace+Hall+Chennai')">
+            📍 View Reception Location
+        </button>
+
+        <div id="countdown"></div>
+
+    </div>
+</div>
+
+<!-- MUSIC -->
+<audio id="bgMusic" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+</audio>
+
+<script>
+
+function openEnvelope(el){
+    el.classList.add("open");
+    document.getElementById("bgMusic").play();
+    setTimeout(()=>{
+        document.querySelector(".envelope-container").style.display="none";
+        document.getElementById("main").style.display="block";
+        document.body.style.overflow="auto";
+    },1500);
+}
+
+function openMap(url){
+    window.open(url,"_blank");
+}
+
+let weddingDate=new Date("May 18, 2026 10:00:00").getTime();
+
+setInterval(()=>{
+    let now=new Date().getTime();
+    let distance=weddingDate-now;
+
+    let days=Math.floor(distance/(1000*60*60*24));
+    let hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+    let minutes=Math.floor((distance%(1000*60*60))/(1000*60));
+    let seconds=Math.floor((distance%(1000*60))/1000);
+
+    document.getElementById("countdown").innerHTML=
+        "<b>Countdown:</b> "+days+"d "+hours+"h "+minutes+"m "+seconds+"s";
+},1000);
+
+function createFlower(){
+    const flower=document.createElement("div");
+    flower.classList.add("flower");
+    flower.innerHTML="🌹";
+    flower.style.left=Math.random()*window.innerWidth+"px";
+    flower.style.animationDuration=(3+Math.random()*5)+"s";
+    document.body.appendChild(flower);
+    setTimeout(()=>flower.remove(),8000);
+}
+setInterval(createFlower,400);
+
+</script>
+
+</body>
+</html>
