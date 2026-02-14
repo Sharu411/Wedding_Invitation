@@ -29,6 +29,7 @@ body{
     justify-content:center;
     align-items:center;
     flex-direction:column;
+    text-align: center;
     color:gold;
     z-index:10;
     animation:fadeOut 3s ease-in-out 4s forwards;
@@ -48,6 +49,69 @@ body{
 
 @keyframes fadeOut{
     to{opacity:0;visibility:hidden;}
+}
+#intro{
+    position:fixed;
+    width:100%;
+    height:100vh;
+    background:radial-gradient(circle at center,#1a1208,#000);
+    /* display:flex; */
+    justify-content:center;
+    align-items:center;
+    text-align:center !important;
+    color:gold;
+    z-index:10;
+    animation:fadeOut 3s ease-in-out 6s forwards;
+}
+
+.intro-content{
+    animation:cinematic 3s ease forwards;
+    text-align:center;
+}
+
+.cross{
+    font-size:50px;
+    margin-bottom:25px;
+    animation:glow 2s infinite alternate;
+}
+
+.blessing{
+    
+    font-size:18px;
+    letter-spacing:4px;
+    margin-bottom:10px;
+    opacity:0.8;
+}
+
+.title{
+    font-size:42px;
+    letter-spacing:3px;
+    margin-bottom:20px;
+}
+
+.verse{
+    font-size:24px;
+    line-height:1.8;
+    font-style:italic;
+    opacity:0.9;
+}
+
+.ref{
+    display:block;
+    margin-top:10px;
+    font-size:14px;
+    letter-spacing:2px;
+}
+
+/* animations */
+@keyframes cinematic{
+    from{opacity:0; transform:translateY(40px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+@keyframes glow{
+    from{text-shadow:0 0 5px gold;}
+    to{text-shadow:0 0 25px gold,0 0 40px #ffd700;}
 }
 
 /* ================= ENVELOPE ================= */
@@ -253,8 +317,6 @@ button{
 
 <div id="intro">
     <div class="intro-content">
-        <div class="cross">✝</div>
-
         <h2 class="blessing">By God's Grace</h2>
 
         <h1 class="title">We Begin Forever As One</h1>
